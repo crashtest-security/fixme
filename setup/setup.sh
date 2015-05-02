@@ -1,4 +1,6 @@
 #!/bin/bash
 
-mysql-ctl start
+echo "Setting up database"
 mysql-ctl cli < create_db.sql 
+
+echo "Finished..."
