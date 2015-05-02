@@ -1,1 +1,3 @@
-This is a vulnerable PHP project, that should be really fixed. It is only used for demonstration purpose.
+Vulnerable PHP project that should really be fixed...
+
+It is and should only be used for demonstration purpose. Do not run this. Really. You will get hacked.
