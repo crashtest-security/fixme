@@ -24,13 +24,16 @@ echo('    <!-- Navigation -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="?site=about">About</a>
+                        <a href="?site=about.php">About</a>
                     </li>
                     <li>
-                        <a href="?site=services">Services</a>
+                        <a href="?site=services.php">Services</a>
                     </li>
                     <li>
-                        <a href="?site=contact">Contact</a>
+                        <a href="?site=login.php">Login</a>
+                    </li>
+                    <li>
+                        <a href="?site=contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
