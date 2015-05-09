@@ -11,7 +11,7 @@ print('<div class="container">');
 
 global $db;
 $id = $_SESSION['userid'];
-$query = "select * from `guestbook` ORDER BY `id` LIMIT 5";
+$query = "select * from `guestbook` ORDER BY `id` DESC LIMIT 5";
 $result = $db->query($query);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
