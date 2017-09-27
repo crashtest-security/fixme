@@ -3,10 +3,12 @@
     // Press the 'Run' button on the top to start the web server,
     // then click the URL that is emitted to the Output tab of the console.
 
-    $servername = getenv('IP');
-    $username = getenv('C9_USER');
-    $password = "";
-    $database = "c9";
+    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+    $servername = $url["host"];
+    $username = $url["user"];
+    $password = $url["pass";
+    $database = substr($url["path"], 1);
     $dbport = 3306;
 
     // Create connection
