@@ -7,7 +7,7 @@
 
     $servername = $url["host"];
     $username = $url["user"];
-    $password = $url["pass";
+    $password = $url["pass"];
     $database = substr($url["path"], 1);
     $dbport = 3306;
 
