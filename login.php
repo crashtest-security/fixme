@@ -42,8 +42,8 @@ if (logged_in() || (isset($_POST['username']) && isset($_POST['password']) && lo
                 <h1>Login</h1>
                 <br />
     <form action="#" method="POST">
-    <input type="text" name="username" id="username" value="username" label="username" /><br />
-    <input type="password" name="password" id="password" value="password" label="password" /><br />
+    <input type="text" name="username" id="username" placeholder="username" label="username" /><br />
+    <input type="password" name="password" id="password" placeholder="password" label="password" /><br />
     <input type="submit" name="submit" id="submit" value="submit" label="submit" />
     </form>
             </div>
