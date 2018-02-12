@@ -10,6 +10,25 @@ print('<div class="container">');
     ');
 
 global $db;
+
+if(isset($_POST['entry']) && $_POST['entry'] != "") {
+    $id = $_SESSION['userid'];
+    $entry = $_POST['entry'];
+    $query = "select * from `users` where `id` = '$id' LIMIT 1";
+    $result = $db->query($query);
+    if ($row = $result->fetch_assoc()) {
+        $username = $row['username'];
+    }
+    $query = "INSERT INTO `guestbook` (`username`, `entry`) VALUES ('$username', '$entry');";
+    $result = $db->query($query);
+    $db->commit();
+    print('<div class="row">
+            <div class="col-lg-12 text-center">
+                Your entry was recorded.
+            </div>
+        </div>');
+}
+
 $id = $_SESSION['userid'];
 $query = "select * from `guestbook` ORDER BY `id` DESC LIMIT 5";
 $result = $db->query($query);
@@ -33,24 +52,6 @@ if ($result->num_rows > 0) {
         </div>
         <!-- /.row -->   
     ');
-}
-
-if(isset($_POST['entry']) && $_POST['entry'] != "") {
-    $id = $_SESSION['userid'];
-    $entry = $_POST['entry'];
-    $query = "select * from `users` where `id` = '$id' LIMIT 1";
-    $result = $db->query($query);
-    if ($row = $result->fetch_assoc()) {
-        $username = $row['username'];
-    }
-    $query = "INSERT INTO `guestbook` (`username`, `entry`) VALUES ('$username', '$entry');";
-    $result = $db->query($query);
-    $db->commit();
-    print('<div class="row">
-            <div class="col-lg-12 text-center">
-                Your entry was recorded. Please reload the page.
-            </div>
-        </div>');
 }
 
 if(logged_in()) {
