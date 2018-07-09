@@ -1,3 +1,5 @@
+USE `c9`;
+
 DROP TABLE IF EXISTS `users`, `guestbook`;
 
 CREATE TABLE `users`
