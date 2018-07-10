@@ -19,6 +19,8 @@ if(isset($_POST['entry']) && $_POST['entry'] != "") {
     if ($row = $result->fetch_assoc()) {
         $username = $row['username'];
     }
+    $entry = strip_tags($entry);
+    $entry = htmlspecialchars($entry);
     $query = "INSERT INTO `guestbook` (`username`, `entry`) VALUES ('$username', '$entry');";
     $result = $db->query($query);
     $db->commit();

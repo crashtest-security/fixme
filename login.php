@@ -2,9 +2,21 @@
 
 function login($username, $password) {
     global $db;
-    $query = "select `id` from `users` where `username` = '$username' AND `password` = '$password'";
-    $result = $db->query($query);
-    if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
+    $query = $db->prepare("select `id` from `users` where `username` = ? AND `password` = ?");
+    $query->bind_param("ss", $username, $password);
+    $query->execute();
+    $query->bind_result($ids);
+    $id = "";
+    $counter = 0;
+    while($query->fetch()) {
+        if ($counter > 0) {
+            // Hacking attempt detected. Should only return one user
+            return(false);
+        }
+        $id = $ids;
+        $counter++;
+    }
+    if ($id != "") {
         $_SESSION['logged_in'] = true;
         $_SESSION['userid'] = $row['id'];
         return(true);

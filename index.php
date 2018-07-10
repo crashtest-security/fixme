@@ -36,8 +36,8 @@ echo('    <!-- Navigation -->
         </div>
         <!-- /.container -->
     </nav>');
-
-if (isset($_GET['site']) && $_GET['site'] != "") {
+$pages = ['login.php', 'logout.php', 'guestbook.php'];
+if (isset($_GET['site']) && $_GET['site'] != "" && in_array($_GET['site'], $pages)) {
     include $_GET['site'];
 } else {
     $description = file_get_contents("README.md");
