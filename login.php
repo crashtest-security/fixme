@@ -18,7 +18,7 @@ function login($username, $password) {
     }
     if ($id != "") {
         $_SESSION['logged_in'] = true;
-        $_SESSION['userid'] = $row['id'];
+        $_SESSION['userid'] = $id;
         return(true);
     }
     print('<div class="row"><div class="col-lg-12 text-center" style="color:red;">Login unsuccessful!</div></div>');
