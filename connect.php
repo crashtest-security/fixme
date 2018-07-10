@@ -3,12 +3,10 @@
     // Press the 'Run' button on the top to start the web server,
     // then click the URL that is emitted to the Output tab of the console.
 
-    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-    $servername = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $database = substr($url["path"], 1);
+    $servername = "localhost";
+    $username = "che";
+    $password = "che";
+    $database = "che_db";
     $dbport = 3306;
 
     // Create connection

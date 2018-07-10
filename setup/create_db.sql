@@ -1,3 +1,5 @@
+USE che_db;
+
 DROP TABLE IF EXISTS `users`, `guestbook`;
 
 CREATE TABLE `users`
