@@ -1,12 +1,12 @@
 <?php
 
 print('<div class="container">');
-    print('<div class="row">
+print('<div class="row">
             <div class="col-lg-12 text-center">
                 <h1>Guestbook</h1>
             </div>
         </div>
-        <!-- /.row -->   
+        <!-- /.row -->
     ');
 
 global $db;
@@ -30,48 +30,44 @@ if(isset($_POST['entry']) && $_POST['entry'] != "") {
 }
 
 $id = $_SESSION['userid'];
-$query = "select * from `guestbook` ORDER BY `id` DESC LIMIT 5";
+$query = "select * from `guestbook` ORDER BY `id` DESC";
 $result = $db->query($query);
 if ($result->num_rows > 0) {
+    print('<table class="table table-striped table-responsive"><thead><tr><th>Author</th><th>Entry</th></tr></thead><tbody>');
     while ($row = $result->fetch_assoc()) {
         $username = $row['username'];
         $entry = $row['entry'];
-        print('<div class="row">
-            <div class="col-lg-12 text-center">
-                ' . $username . ': ' . $entry . '
-            </div>
-        </div>
-        <!-- /.row -->   
-    ');
+        print('<tr><td>' . $username . '</td><td>' . $entry . '</td></tr>');
     }
+    print('</tbody></table>');
 } else {
-        print('<div class="row">
+    print('<div class="row">
             <div class="col-lg-12 text-center">
                 Sorry. There is nothing here!
             </div>
         </div>
-        <!-- /.row -->   
+        <!-- /.row -->
     ');
 }
 
 if(logged_in()) {
-        print('<div class="row">
+    print('<div class="row">
             <div class="col-lg-12 text-center">
     <form action="#" method="POST">
-    <textarea rows="4" cols="50" name="entry" id="entry" value="entry" label="entry"></textarea><br />
-    <input type="submit" name="submit" id="submit" value="submit" label="submit" />
+    <textarea class="form-control" rows="4" cols="50" name="entry" id="entry" value="entry" label="entry" placeholder="My entry ..."></textarea><br />
+    <input class="btn btn-default" type="submit" name="submit" id="submit" value="submit" label="submit" />
     </form>
             </div>
         </div>
-        <!-- /.row -->   
+        <!-- /.row -->
     ');
 } else {
-        print('<div class="row">
+    print('<div class="row">
             <div class="col-lg-12 text-center">
                 Sorry. You need to log in to write something.
             </div>
         </div>
-        <!-- /.row -->   
+        <!-- /.row -->
     ');
 }
 

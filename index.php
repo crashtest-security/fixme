@@ -19,7 +19,7 @@ echo('    <!-- Navigation -->
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">FixMe</a>
+                <a class="navbar-brand" href="/fixme">FixMe</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -40,7 +40,7 @@ echo('    <!-- Navigation -->
 if (isset($_GET['site']) && $_GET['site'] != "") {
     include $_GET['site'];
 } else {
-    $description = file_get_contents("README.md");
+    $description = nl2br(file_get_contents("README.md"));
     echo('    <!-- Page Content -->
     <div class="container">
 
