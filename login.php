@@ -32,36 +32,60 @@ print('<div class="container">');
 
 if (logged_in() || (isset($_POST['username']) && isset($_POST['password']) && login($_POST['username'], $_POST['password']))) {
     $id = $_SESSION['userid'];
-        global $db;
+    global $db;
     $query = "select * from `users` where `id` = '$id' LIMIT 1";
     $result = $db->query($query);
     if ($row = $result->fetch_assoc()) {
         $username = $row['username'];
     }
-    
+
     print('<div class="row">
             <div class="col-lg-12 text-center">
                 <h1>Private Area</h1>
                 Hey ' . $username . '. Nice to have you here!
-            <a href="?site=logout.php">Logout</a>
+            <p>
+                <a class="btn btn-danger" href="?site=logout.php">Logout</a>
+            </p>
             </div>
         </div>
-        <!-- /.row -->   
+        <!-- /.row -->
     ');
 } else {
     print('<div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-offset-3 col-lg-6 text-center">
                 <h1>Login</h1>
                 <br />
-    <form action="#" method="POST">
-    <input type="text" name="username" id="username" placeholder="username" label="username" /><br />
-    <input type="password" name="password" id="password" placeholder="password" label="password" /><br />
-    Stay logged in? <input type="checkbox" name="loggedin" id="loggedin" value="true" /><br />
-    <input type="submit" name="submit" id="submit" value="submit" label="submit" />
-    </form>
+                <form class="form-horizontal" action="#" method="POST">
+                  <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <div class="checkbox">
+                        <label>
+                          <input name="loggedin" id="loggedin" type="checkbox" checked="checked"> Remember me
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-default">Sign in</button>
+                    </div>
+                  </div>
+                </form>
+                </div>
             </div>
-        </div>
-        <!-- /.row -->');
+            <!-- /.row -->');
 }
 
 print('
